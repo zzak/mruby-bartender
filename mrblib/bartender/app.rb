@@ -16,9 +16,11 @@ module Bartender
     end
 
     def step(timeout=nil)
-      r, w = IO.select(@input.keys, @output.keys, [], timeout)
-      r.each {|fd| @input[fd].call }
-      w.each {|fd| @output[fd].call }
+      read_set = @input.keys.map {|n| IO.for_fd(n)}
+      write_set = @output.keys.map {|n| IO.for_fd(n)}
+      r, w = IO.select(read_set, write_set, [], timeout)
+      r.each {|fd| @input[fd.to_i].call }
+      w.each {|fd| @output[fd.to_i].call }
     end
 
     def event_map(event)
@@ -33,6 +35,7 @@ module Bartender
     end
 
     def []=(event, fd, callback)
+      fd = fd.to_i
       return delete(event, fd) unless callback
       event_map(event)[fd] = callback
     end
