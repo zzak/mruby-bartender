@@ -10,6 +10,6 @@ MRuby::Gem::Specification.new('mruby-bartender') do |spec|
   spec.add_dependency 'mruby-fiber', core: 'mruby-fiber'
 
   # mgem dependencies
-  spec.add_dependency 'mruby-uv', mgem: 'mruby-uv'
+  spec.add_dependency 'mruby-socket', mgem: 'mruby-socket'
   spec.add_dependency 'mruby-io', mgem: 'mruby-io'
 end
