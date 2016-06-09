@@ -3,7 +3,7 @@ module Bartender
     def initialize(bartender, port, &blk)
       @bartender = bartender
       @server = TCPServer.new(port)
-      @bartender[:read, @server] = self.method(:on_accept)
+      @bartender[:read, @server] = lambda { on_accept }
       @blk = blk
     end
 
