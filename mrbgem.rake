@@ -9,6 +9,10 @@ MRuby::Gem::Specification.new('mruby-bartender') do |spec|
   spec.add_dependency 'mruby-array-ext', core: 'mruby-array-ext'
   spec.add_dependency 'mruby-fiber', core: 'mruby-fiber'
 
+  # test
+  spec.add_dependency 'mruby-bin-mruby', core: 'mruby-bin-mruby'
+  spec.add_dependency 'mruby-bin-mirb', core: 'mruby-bin-mirb'
+
   # mgem dependencies
   spec.add_dependency 'mruby-socket', mgem: 'mruby-socket'
   spec.add_dependency 'mruby-io', mgem: 'mruby-io'
